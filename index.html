@@ -5,49 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dinesh Crystals — Crystals, Geodes & Stones | San Diego</title>
 <meta name="description" content="Shop amethyst geodes, crystal points on stands, geode hearts and flats. Natural crystals and stones, shipped from San Diego, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#243420;--purple:#4f7d3a;--purple2:#689a4e;--lav:#eef6e4;--gold:#a7c957;--bg:#ffffff;--card:#fff;--muted:#6f6580;--radius:16px}
+:root{--ink:#26361f;--purple:#4f7d3a;--purple2:#689a4e;--lav:#e6f2d8;--gold:#a7c957;--bg:#f4f8ee;--card:#fff;--muted:#66755c;--radius:24px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-tap-highlight-color:transparent}
 a{color:var(--purple)}
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #dcebd0}
 .bar{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:12px 16px}
-.logo{font-weight:800;font-size:20px;letter-spacing:.2px}
+.logo{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:23px;letter-spacing:.2px}
 .logo span{color:var(--purple2)}
 .tag{font-size:11px;color:var(--muted);display:block;font-weight:500}
 .cartbtn{margin-left:auto;background:var(--purple);color:#fff;border:0;border-radius:999px;padding:10px 16px;font-size:15px;font-weight:700;cursor:pointer;min-height:44px}
 .cartbtn b{background:var(--gold);color:#221a2e;border-radius:999px;padding:1px 8px;margin-left:6px}
 .hero{max-width:1100px;margin:0 auto;padding:18px 16px 6px}
-.hero-card{position:relative;border-radius:22px;overflow:hidden;background:#33502a;color:#fff}
-.hero-card img{width:100%;height:300px;object-fit:cover;display:block;opacity:.85}
-.hero-txt{position:absolute;inset:auto 0 0 0;padding:20px;background:linear-gradient(transparent,rgba(22,42,16,.88))}
-.hero-txt h1{font-size:28px;line-height:1.15}
-.hero-txt p{font-size:14px;opacity:.92;margin-top:6px;max-width:520px}
-.hero-txt .cta{display:inline-block;margin-top:12px;background:var(--gold);color:#221a2e;font-weight:800;padding:11px 18px;border-radius:999px;text-decoration:none}
+.hero-card{position:relative;border-radius:28px;overflow:hidden;background:#e9f2dd;color:#26361f}
+.hero-card img{width:100%;height:320px;object-fit:cover;display:block}
+.hero-txt{position:relative;margin:-64px 14px 14px;background:#fff;border-radius:26px;padding:24px 22px;box-shadow:0 10px 34px rgba(80,120,55,.16)}
+.hero-txt h1{font-family:'Playfair Display',Georgia,serif;font-size:32px;line-height:1.16;color:#26361f}
+.hero-txt p{font-size:15px;color:#5b6b52;margin-top:8px;max-width:560px;line-height:1.55}
+.hero-txt .cta{display:inline-block;margin-top:14px;background:var(--purple);color:#fff;font-weight:700;padding:12px 20px;border-radius:999px;text-decoration:none}
 .perks{max-width:1100px;margin:10px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap}
-.perk{background:var(--lav);color:var(--purple);font-size:12.5px;font-weight:700;border-radius:999px;padding:7px 12px}
+.perk{background:var(--lav);color:#37512a;font-size:12.5px;font-weight:700;border-radius:999px;padding:7px 12px}
 .controls{max-width:1100px;margin:14px auto 0;padding:0 16px}
 .search{width:100%;padding:13px 16px;border:1.5px solid #d3e4c2;border-radius:999px;font-size:16px;background:#fff}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:12px 2px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;border:1.5px solid #d3e4c2;background:#fff;color:var(--purple);font-weight:700;font-size:14px;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:42px}
+.chip{flex:0 0 auto;border:1.5px solid #d3e4c2;background:#fff;color:#37512a;font-weight:700;font-size:14px;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:42px}
 .chip.on{background:var(--purple);color:#fff;border-color:var(--purple)}
 main{max-width:1100px;margin:0 auto;padding:4px 16px 30px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1020px){.grid{grid-template-columns:repeat(4,1fr)}}
-.card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 10px rgba(80,120,55,.10);display:flex;flex-direction:column}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid #e3eed8;box-shadow:0 6px 22px rgba(80,120,55,.08);display:flex;flex-direction:column}
 .card img{width:100%;height:190px;object-fit:cover;display:block;background:var(--lav)}
 .card .body{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
-.card h3{font-size:15px;line-height:1.3}
+.card h3{font-family:'Playfair Display',Georgia,serif;font-size:16.5px;line-height:1.3}
 .sku{font-size:11.5px;color:var(--muted);letter-spacing:.4px}
 .price{font-size:17px;font-weight:800;color:var(--purple);margin-top:2px}
-.add{margin-top:auto;background:var(--purple);color:#fff;border:0;border-radius:10px;padding:11px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:44px}
+.add{margin-top:auto;background:var(--purple);color:#fff;border:0;border-radius:999px;padding:11px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:44px}
 .add:active{background:var(--purple2)}
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:36px 0}
 section.info{max-width:1100px;margin:0 auto;padding:6px 16px 26px}
-.info .box{background:#fff;border-radius:var(--radius);padding:18px;box-shadow:0 2px 10px rgba(80,120,55,.08)}
-.info h2{font-size:19px;margin-bottom:8px}
+.info .box{background:#fff;border:1px solid #e3eed8;border-radius:var(--radius);padding:18px;box-shadow:0 2px 10px rgba(80,120,55,.08)}
+.info h2{font-family:'Playfair Display',Georgia,serif;font-size:22px;margin-bottom:8px}
 .info p{font-size:14px;color:#463c58;line-height:1.55}
 footer{background:#2f4423;color:#d9e8cd;text-align:center;padding:26px 16px;font-size:13px;line-height:1.7}
 footer b{color:#fff}
@@ -92,20 +93,14 @@ dialog::backdrop{background:rgba(18,35,12,.55)}
 </div></header>
 
 <div class="hero"><div class="hero-card">
-  <img src="img/amethyst-l.jpg" alt="Large amethyst cut base geode">
+  <img src="img/hero-flatlay.jpg" alt="Amethyst geode, rose quartz hearts and clear quartz points on white marble with eucalyptus">
   <div class="hero-txt">
-    <h1>Natural crystals, geodes &amp; stones</h1>
+    <h1>Dinesh Crystals &amp; Stones</h1>
     <p>Amethyst geodes, crystal points on stands, geode hearts and flats — hand-picked pieces for your home, meditation space, or gift-giving.</p>
-    <a class="cta" href="#shop">Shop the collection ↓</a>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><span class="perk">🌿 Natural, genuine stones</span><span class="perk">📦 Ships from San Diego</span><span class="perk">🚚 Free shipping over $75</span></div><a class="cta" href="#shop">Shop the collection ↓</a>
   </div>
 </div></div>
 
-<div class="perks">
-  <span class="perk">🚚 Free U.S. shipping over $75</span>
-  <span class="perk">💎 Natural, genuine stones</span>
-  <span class="perk">↩️ 14-day easy returns</span>
-  <span class="perk">📦 Ships from San Diego</span>
-</div>
 
 <div class="controls" id="shop">
   <input class="search" id="search" type="search" placeholder="Search crystals… e.g. amethyst, citrine, heart" aria-label="Search products">
