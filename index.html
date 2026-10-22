@@ -33,6 +33,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdro
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;border:1.5px solid #d3e4c2;background:#fff;color:#37512a;font-weight:700;font-size:14px;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:42px}
 .chip.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+.best{max-width:1100px;margin:18px auto 0;padding:0 16px}
+.best h2{font-family:'Playfair Display',Georgia,serif;font-size:26px}
+.best-sub{color:var(--muted);font-size:13.5px;margin-top:4px}
+.best-row{display:flex;gap:12px;overflow-x:auto;padding:14px 2px 6px;scrollbar-width:none}
+.best-row::-webkit-scrollbar{display:none}
+.bcard{flex:0 0 168px;background:#fff;border:1px solid #e3eed8;border-radius:20px;overflow:hidden;box-shadow:0 6px 22px rgba(80,120,55,.08)}
+.bcard img{width:100%;height:150px;object-fit:cover;display:block}
+.bcard .bb{padding:10px 12px}
+.bcard .rank{display:inline-block;background:#dff0cd;color:#2f4d22;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px}
+.bcard h3{font-family:'Playfair Display',Georgia,serif;font-size:15.5px;margin-top:6px;line-height:1.25}
+.bcard .bp{color:var(--purple);font-weight:800;font-size:15px;margin:4px 0 8px}
+.bcard .add{width:100%;padding:9px;font-size:13.5px;min-height:40px}
 main{max-width:1100px;margin:0 auto;padding:4px 16px 30px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -102,6 +114,11 @@ dialog::backdrop{background:rgba(18,35,12,.55)}
 </div></div>
 
 
+<section class="best" id="best">
+  <h2>🏆 Best-Selling Stones</h2>
+  <p class="best-sub">The Top 10 crystals that sell most in the U.S. — ranked from our Oct 22, 2026 market research.</p>
+  <div class="best-row" id="bestRow"></div>
+</section>
 <div class="controls" id="shop">
   <input class="search" id="search" type="search" placeholder="Search crystals… e.g. amethyst, citrine, heart" aria-label="Search products">
   <div class="chips" id="chips"></div>
@@ -157,6 +174,16 @@ dialog::backdrop{background:rgba(18,35,12,.55)}
 
 <script>
 const PRODUCTS=[
+{n:"Amethyst Cluster — #1 Best Seller",sku:"BS-AMY",cat:"Best Sellers",price:24.99,img:"img/best-amethyst.jpg"},
+{n:"Rose Quartz Raw Chunks, 1 lb — #2 Best Seller",sku:"BS-RQ",cat:"Best Sellers",price:14.99,img:"img/best-rose-quartz.jpg"},
+{n:"Clear Quartz Point — #3 Best Seller",sku:"BS-CQ",cat:"Best Sellers",price:16.99,img:"img/best-clear-quartz.jpg"},
+{n:"Citrine Point — #4 Best Seller",sku:"BS-CIT",cat:"Best Sellers",price:18.99,img:"img/best-citrine.jpg"},
+{n:"Black Tourmaline Raw Chunks — #5 Best Seller",sku:"BS-BT",cat:"Best Sellers",price:12.99,img:"img/best-black-tourmaline.jpg"},
+{n:"Selenite Tower — #6 Best Seller",sku:"BS-SEL",cat:"Best Sellers",price:19.99,img:"img/best-selenite.jpg"},
+{n:"Labradorite Palm Stone — #7 Best Seller",sku:"BS-LAB",cat:"Best Sellers",price:16.99,img:"img/best-labradorite.jpg"},
+{n:"Tiger's Eye Tumbled Stones — #8 Best Seller",sku:"BS-TE",cat:"Best Sellers",price:9.99,img:"img/best-tigers-eye.jpg"},
+{n:"Carnelian Tumbled Stones — #9 Best Seller",sku:"BS-CAR",cat:"Best Sellers",price:9.99,img:"img/best-carnelian.jpg"},
+{n:"Fluorite Cluster — #10 Best Seller",sku:"BS-FLU",cat:"Best Sellers",price:22.99,img:"img/best-fluorite.jpg"},
 {n:"Cut Base Geode — Amethyst, Small",sku:"BZ-CBAS",cat:"Geodes",price:49.99,img:"img/amethyst-s.jpg"},
 {n:"Cut Base Geode — Amethyst, Medium",sku:"BZ-CBAM",cat:"Geodes",price:69.99,img:"img/amethyst-m.jpg"},
 {n:"Cut Base Geode — Amethyst, Large",sku:"BZ-CBAL",cat:"Geodes",price:99.99,img:"img/amethyst-l.jpg"},
@@ -194,7 +221,7 @@ const PRODUCTS=[
 {n:"Geode Flat — Lavender Aura",sku:"GF-LA",cat:"Flats",price:27.99,img:"img/geode-flat-lavender.jpg"},
 {n:"Geode Flat — Amethyst Point",sku:"GF-AMP",cat:"Flats",price:29.99,img:"img/geode-flat-amethyst-point.jpg"}
 ];
-const CATS=["All","Geodes","On Stand","Hearts","Flats"];
+const CATS=["All","Best Sellers","Geodes","On Stand","Hearts","Flats"];
 let cat="All", cart=JSON.parse(localStorage.getItem("dc_cart")||"{}");
 const $=id=>document.getElementById(id);
 const money=v=>"$"+v.toFixed(2);
@@ -242,7 +269,12 @@ $("checkoutForm").onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target
  $("doneMsg").innerHTML=`Thank you, ${fd.get("name")}! Your order <b>${num}</b> (${list.reduce((s,x)=>s+x.q,0)} item(s), total <b>${total}</b>) was received.<br>We'll email <b>${fd.get("email")}</b> to confirm and arrange payment.`;
  $("checkoutModal").close();cart={};save();$("doneModal").showModal()};
 $("doneOk").onclick=()=>$("doneModal").close();
-renderChips();renderGrid();renderCart();
+function renderBest(){
+  const list=PRODUCTS.map((p,i)=>({...p,i})).filter(p=>p.cat==="Best Sellers");
+  $("bestRow").innerHTML=list.map((p,k)=>`<div class="bcard"><img src="${p.img}" alt="${p.n}" loading="lazy"><div class="bb"><span class="rank">#${k+1} BEST SELLER</span><h3>${p.n.split(" — ")[0]}</h3><div class="bp">${money(p.price)}</div><button class="add" data-add="${p.i}">Add to cart 🛒</button></div></div>`).join("");
+  document.querySelectorAll("#bestRow [data-add]").forEach(b=>b.onclick=()=>{const i=b.dataset.add;cart[i]=(cart[i]||0)+1;save();toast("Added: "+PRODUCTS[i].n)});
+}
+renderChips();renderGrid();renderCart();renderBest();
 </script>
 </body>
 </html>
