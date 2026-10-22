@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dinesh Crystals — Crystals, Geodes & Stones | San Diego</title>
+<meta name="description" content="Shop amethyst geodes, crystal points on stands, geode hearts and flats. Natural crystals and stones, shipped from San Diego, CA.">
+<style>
+:root{--ink:#221a2e;--purple:#5b2a86;--purple2:#7c3fbc;--lav:#efe7f8;--gold:#c9a227;--bg:#faf7fd;--card:#fff;--muted:#6f6580;--radius:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);-webkit-tap-highlight-color:transparent}
+a{color:var(--purple)}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid #e7ddf3}
+.bar{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:12px 16px}
+.logo{font-weight:800;font-size:20px;letter-spacing:.2px}
+.logo span{color:var(--purple2)}
+.tag{font-size:11px;color:var(--muted);display:block;font-weight:500}
+.cartbtn{margin-left:auto;background:var(--purple);color:#fff;border:0;border-radius:999px;padding:10px 16px;font-size:15px;font-weight:700;cursor:pointer;min-height:44px}
+.cartbtn b{background:var(--gold);color:#221a2e;border-radius:999px;padding:1px 8px;margin-left:6px}
+.hero{max-width:1100px;margin:0 auto;padding:18px 16px 6px}
+.hero-card{position:relative;border-radius:22px;overflow:hidden;background:#2a1745;color:#fff}
+.hero-card img{width:100%;height:300px;object-fit:cover;display:block;opacity:.85}
+.hero-txt{position:absolute;inset:auto 0 0 0;padding:20px;background:linear-gradient(transparent,rgba(24,10,44,.88))}
+.hero-txt h1{font-size:28px;line-height:1.15}
+.hero-txt p{font-size:14px;opacity:.92;margin-top:6px;max-width:520px}
+.hero-txt .cta{display:inline-block;margin-top:12px;background:var(--gold);color:#221a2e;font-weight:800;padding:11px 18px;border-radius:999px;text-decoration:none}
+.perks{max-width:1100px;margin:10px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap}
+.perk{background:var(--lav);color:var(--purple);font-size:12.5px;font-weight:700;border-radius:999px;padding:7px 12px}
+.controls{max-width:1100px;margin:14px auto 0;padding:0 16px}
+.search{width:100%;padding:13px 16px;border:1.5px solid #ddd0ef;border-radius:999px;font-size:16px;background:#fff}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1.5px solid #ddd0ef;background:#fff;color:var(--purple);font-weight:700;font-size:14px;border-radius:999px;padding:9px 16px;cursor:pointer;min-height:42px}
+.chip.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+main{max-width:1100px;margin:0 auto;padding:4px 16px 30px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1020px){.grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 10px rgba(60,30,110,.08);display:flex;flex-direction:column}
+.card img{width:100%;height:190px;object-fit:cover;display:block;background:var(--lav)}
+.card .body{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.card h3{font-size:15px;line-height:1.3}
+.sku{font-size:11.5px;color:var(--muted);letter-spacing:.4px}
+.price{font-size:17px;font-weight:800;color:var(--purple);margin-top:2px}
+.add{margin-top:auto;background:var(--purple);color:#fff;border:0;border-radius:10px;padding:11px;font-size:14.5px;font-weight:700;cursor:pointer;min-height:44px}
+.add:active{background:var(--purple2)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:36px 0}
+section.info{max-width:1100px;margin:0 auto;padding:6px 16px 26px}
+.info .box{background:#fff;border-radius:var(--radius);padding:18px;box-shadow:0 2px 10px rgba(60,30,110,.06)}
+.info h2{font-size:19px;margin-bottom:8px}
+.info p{font-size:14px;color:#463c58;line-height:1.55}
+footer{background:#221733;color:#cfc4e6;text-align:center;padding:26px 16px;font-size:13px;line-height:1.7}
+footer b{color:#fff}
+/* cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(20,8,40,.55);z-index:80;display:none}
+.overlay.show{display:block}
+.drawer{position:fixed;top:0;right:0;height:100dvh;width:min(430px,94vw);background:#fff;z-index:90;transform:translateX(105%);transition:transform .25s ease;display:flex;flex-direction:column}
+.drawer.show{transform:none}
+.drawer header{position:static;border:0}
+.drawer h2{font-size:19px;padding:16px}
+.close{margin-left:auto;background:var(--lav);border:0;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer}
+.items{flex:1;overflow-y:auto;padding:0 16px}
+.row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f0e9f8;align-items:center}
+.row img{width:56px;height:56px;object-fit:cover;border-radius:10px}
+.row .n{font-size:13.5px;font-weight:700}
+.row .p{font-size:13px;color:var(--purple);font-weight:700}
+.qty{display:flex;align-items:center;gap:8px;margin-left:auto}
+.qty button{width:32px;height:32px;border-radius:50%;border:1.5px solid #ddd0ef;background:#fff;font-size:16px;cursor:pointer}
+.foot{padding:16px;border-top:1px solid #eee}
+.tot{display:flex;justify-content:space-between;font-size:15px;margin-bottom:6px}
+.tot.grand{font-size:18px;font-weight:800}
+.ship{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.checkout{width:100%;background:var(--gold);color:#221a2e;border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;min-height:50px}
+.note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:8px}
+dialog{border:0;border-radius:18px;padding:0;width:min(480px,94vw);max-height:92dvh;overflow-y:auto}
+dialog::backdrop{background:rgba(20,8,40,.55)}
+.modal{padding:20px}
+.modal h2{font-size:20px;margin-bottom:4px}
+.modal p{font-size:13.5px;color:var(--muted);margin-bottom:12px}
+.modal label{display:block;font-size:13px;font-weight:700;margin:10px 0 4px}
+.modal input,.modal textarea{width:100%;padding:11px;border:1.5px solid #ddd0ef;border-radius:10px;font-size:15px}
+.modal .ok{width:100%;background:var(--purple);color:#fff;border:0;border-radius:12px;padding:13px;font-size:15.5px;font-weight:800;cursor:pointer;margin-top:14px;min-height:48px}
+.modal .cancel{width:100%;background:none;border:0;color:var(--muted);padding:10px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;font-weight:700;z-index:120;transition:transform .25s;max-width:92vw;text-align:center}
+.toast.show{transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <div class="logo">💜 Dinesh <span>Crystals</span><span class="tag">Crystals · Geodes · Stones — San Diego, CA</span></div>
+  <button class="cartbtn" id="openCart" aria-label="Open cart">🛒 Cart <b id="cartCount">0</b></button>
+</div></header>
+
+<div class="hero"><div class="hero-card">
+  <img src="img/amethyst-l.jpg" alt="Large amethyst cut base geode">
+  <div class="hero-txt">
+    <h1>Natural crystals, geodes &amp; stones</h1>
+    <p>Amethyst geodes, crystal points on stands, geode hearts and flats — hand-picked pieces for your home, meditation space, or gift-giving.</p>
+    <a class="cta" href="#shop">Shop the collection ↓</a>
+  </div>
+</div></div>
+
+<div class="perks">
+  <span class="perk">🚚 Free U.S. shipping over $75</span>
+  <span class="perk">💎 Natural, genuine stones</span>
+  <span class="perk">↩️ 14-day easy returns</span>
+  <span class="perk">📦 Ships from San Diego</span>
+</div>
+
+<div class="controls" id="shop">
+  <input class="search" id="search" type="search" placeholder="Search crystals… e.g. amethyst, citrine, heart" aria-label="Search products">
+  <div class="chips" id="chips"></div>
+</div>
+
+<main><div class="grid" id="grid"></div></main>
+
+<section class="info"><div class="box">
+  <h2>How to choose your crystal</h2>
+  <p>Pick what draws your eye first — color, shape and natural formation make every piece one of a kind. <b>Amethyst</b> is loved for calm and clarity, <b>citrine</b> for warmth and abundance, <b>rose quartz</b> for love, <b>smoky quartz</b> and <b>clear quartz</b> for grounding and focus, and <b>aura geodes</b> for a rainbow sparkle that lights up a room. Traditional associations are shared for inspiration — they are not medical claims.</p>
+</div></section>
+
+<footer>
+  <b>Dinesh Crystals</b> — San Diego, California<br>
+  Questions about an order? Reply to your order confirmation email.<br>
+  © 2026 Dinesh Crystals. Every natural stone is unique — the piece you receive may vary slightly in color and formation.
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart">
+  <header><div style="display:flex;align-items:center;width:100%"><h2>Your cart 🛒</h2><button class="close" id="closeCart" aria-label="Close cart">✕</button></div></header>
+  <div class="items" id="items"></div>
+  <div class="foot">
+    <div class="tot"><span>Subtotal</span><span id="subTotal">$0.00</span></div>
+    <div class="tot"><span>Shipping</span><span id="shipCost">—</span></div>
+    <div class="ship" id="shipMsg">Free U.S. shipping on orders over $75.</div>
+    <div class="tot grand"><span>Total</span><span id="grandTotal">$0.00</span></div>
+    <button class="checkout" id="checkoutBtn">Checkout →</button>
+    <div class="note">Demo checkout — no real payment is taken yet. Orders are confirmed by email.</div>
+  </div>
+</aside>
+
+<dialog id="checkoutModal"><div class="modal">
+  <h2>Checkout</h2><p>Fill this in and we'll email you to confirm your order and payment. (Demo checkout — no card is charged.)</p>
+  <form id="checkoutForm">
+    <label>Full name</label><input required name="name" autocomplete="name">
+    <label>Email</label><input required type="email" name="email" autocomplete="email">
+    <label>Phone (optional)</label><input name="phone" autocomplete="tel">
+    <label>Shipping address</label><textarea required name="address" rows="3" autocomplete="street-address"></textarea>
+    <button class="ok" type="submit">Place order</button>
+    <button class="cancel" type="button" id="cancelCheckout">Cancel</button>
+  </form>
+</div></dialog>
+
+<dialog id="doneModal"><div class="modal" style="text-align:center">
+  <div style="font-size:44px">💜</div>
+  <h2>Order received!</h2>
+  <p id="doneMsg"></p>
+  <button class="ok" id="doneOk">Keep shopping</button>
+</div></dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS=[
+{n:"Cut Base Geode — Amethyst, Small",sku:"BZ-CBAS",cat:"Geodes",price:49.99,img:"img/amethyst-s.jpg"},
+{n:"Cut Base Geode — Amethyst, Medium",sku:"BZ-CBAM",cat:"Geodes",price:69.99,img:"img/amethyst-m.jpg"},
+{n:"Cut Base Geode — Amethyst, Large",sku:"BZ-CBAL",cat:"Geodes",price:99.99,img:"img/amethyst-l.jpg"},
+{n:"Cut Base Geode — Lavender Aura, Small",sku:"BZ-CBLS",cat:"Geodes",price:54.99,img:"img/lavender-aura-s.jpg"},
+{n:"Cut Base Geode — Rainbow Aura, Small",sku:"BZ-CBRS",cat:"Geodes",price:54.99,img:"img/rainbow-aura-s.jpg"},
+{n:"Amethyst on Stand",sku:"MB-AMC",cat:"On Stand",price:39.99,img:"img/amethyst-stand.jpg"},
+{n:"Blue Aura Geode on Stand",sku:"MB-BAC",cat:"On Stand",price:39.99,img:"img/blue-aura-stand.jpg"},
+{n:"Blue Kyanite on Metal Base",sku:"MB-BKR",cat:"On Stand",price:34.99,img:"img/blue-kyanite.jpg"},
+{n:"Fluorite on Metal Base",sku:"MB-FLR",cat:"On Stand",price:34.99,img:"img/fluorite-base.jpg"},
+{n:"Pink Tourmaline on Metal Base",sku:"MB-PTR",cat:"On Stand",price:36.99,img:"img/pink-tourmaline.jpg"},
+{n:"Rainbow Aura Point on Stand",sku:"MB-RAP",cat:"On Stand",price:29.99,img:"img/rainbow-aura-point.jpg"},
+{n:"Smoky Quartz Cluster on Stand",sku:"MB-SQC",cat:"On Stand",price:39.99,img:"img/smoky-cluster.jpg"},
+{n:"Smoky Quartz Point on Metal Base",sku:"MB-SQP",cat:"On Stand",price:29.99,img:"img/smoky-point.jpg"},
+{n:"Smoky Quartz Raw on Metal Base",sku:"MB-SQR",cat:"On Stand",price:29.99,img:"img/smoky-raw.jpg"},
+{n:"Agate Thick Slabs on Metal Base, Small",sku:"MB-ATSMB11",cat:"On Stand",price:44.99,img:"img/agate-slabs.jpg"},
+{n:"Amethyst Point on Metal Base",sku:"MB-AMP",cat:"On Stand",price:27.99,img:"img/amethyst-point.jpg"},
+{n:"Clear Quartz Raw on Metal Base",sku:"MB-CQRMB21",cat:"On Stand",price:24.99,img:"img/clear-quartz-raw.jpg"},
+{n:"Clear Quartz Points on Metal Base",sku:"MB-CQP",cat:"On Stand",price:27.99,img:"img/clear-quartz-points.jpg"},
+{n:"Citrine Point on Metal Base",sku:"MB-CTP",cat:"On Stand",price:27.99,img:"img/citrine-point.jpg"},
+{n:"Citrine Aura Point on Stand",sku:"MB-CTAP",cat:"On Stand",price:29.99,img:"img/citrine-aura-point.jpg"},
+{n:"Heart Geode — Amethyst",sku:"SC-HTAM",cat:"Hearts",price:12.99,img:"img/heart-amethyst.jpg"},
+{n:"Geode on Stand — Amethyst Heart, Small",sku:"MB-HTAMS",cat:"Hearts",price:34.99,img:"img/heart-amethyst-s.jpg"},
+{n:"Geode on Stand — Amethyst Heart, Medium",sku:"MB-HTAMM",cat:"Hearts",price:44.99,img:"img/heart-amethyst-m.jpg"},
+{n:"Geode on Stand — Agate Heart, Mini",sku:"MB-HTAMI",cat:"Hearts",price:24.99,img:"img/heart-agate-mini.jpg"},
+{n:"Mini Flat — Lavender Aura",sku:"MF-AAMF",cat:"Flats",price:19.99,img:"img/mini-flat-lavender.jpg"},
+{n:"Mini Flat — Rainbow Aura",sku:"MF-ARMF",cat:"Flats",price:19.99,img:"img/mini-flat-rainbow.jpg"},
+{n:"Geode Flat — Small",sku:"GF-AFS",cat:"Flats",price:24.99,img:"img/geode-flat-s.jpg"},
+{n:"Geode Flat — Pearly, Small",sku:"GF-PAS",cat:"Flats",price:24.99,img:"img/geode-flat-pearly.jpg"},
+{n:"Geode Flat — Pearly Rainbow Mix, Small",sku:"GF-PRAS",cat:"Flats",price:27.99,img:"img/geode-flat-pearly-rainbow.jpg"},
+{n:"Geode Flat — Rainbow, Small",sku:"GF-ARS",cat:"Flats",price:27.99,img:"img/geode-flat-rainbow.jpg"},
+{n:"Geode Flat — Amethyst, Small",sku:"GF-AMS",cat:"Flats",price:24.99,img:"img/geode-flat-amethyst.jpg"},
+{n:"Geode Flat — Rainbow Aura",sku:"GF-RA",cat:"Flats",price:27.99,img:"img/geode-flat-rainbow-aura.jpg"},
+{n:"Geode Flat — Amethyst Box",sku:"GF-AMB",cat:"Flats",price:29.99,img:"img/geode-flat-amethyst-box.jpg"},
+{n:"Geode Flat — Blue Aura",sku:"GF-BA",cat:"Flats",price:27.99,img:"img/geode-flat-blue.jpg"},
+{n:"Geode Flat — Lavender Aura",sku:"GF-LA",cat:"Flats",price:27.99,img:"img/geode-flat-lavender.jpg"},
+{n:"Geode Flat — Amethyst Point",sku:"GF-AMP",cat:"Flats",price:29.99,img:"img/geode-flat-amethyst-point.jpg"}
+];
+const CATS=["All","Geodes","On Stand","Hearts","Flats"];
+let cat="All", cart=JSON.parse(localStorage.getItem("dc_cart")||"{}");
+const $=id=>document.getElementById(id);
+const money=v=>"$"+v.toFixed(2);
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+function renderChips(){$("chips").innerHTML=CATS.map(c=>`<button class="chip ${c===cat?'on':''}" data-cat="${c}">${c}</button>`).join("");
+ document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{cat=b.dataset.cat;renderChips();renderGrid()})}
+function renderGrid(){
+ const q=$("search").value.trim().toLowerCase();
+ const list=PRODUCTS.map((p,i)=>({...p,i})).filter(p=>(cat==="All"||p.cat===cat)&&(!q||(p.n+" "+p.sku).toLowerCase().includes(q)));
+ $("grid").innerHTML=list.length?list.map(p=>`<div class="card">
+   <img src="${p.img}" alt="${p.n}" loading="lazy">
+   <div class="body"><h3>${p.n}</h3><div class="sku">SKU: ${p.sku}</div>
+   <div class="price">${money(p.price)}</div>
+   <button class="add" data-add="${p.i}">Add to cart 🛒</button></div></div>`).join("")
+  :`<div class="empty">No crystals match that search.</div>`;
+ document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>{const i=b.dataset.add;cart[i]=(cart[i]||0)+1;save();toast("Added: "+PRODUCTS[i].n)});
+}
+function cartList(){return Object.entries(cart).map(([i,q])=>({...PRODUCTS[i],i:+i,q})).filter(x=>x.q>0)}
+function save(){localStorage.setItem("dc_cart",JSON.stringify(cart));renderCart()}
+function renderCart(){
+ const list=cartList();
+ $("cartCount").textContent=list.reduce((s,x)=>s+x.q,0);
+ $("items").innerHTML=list.length?list.map(x=>`<div class="row">
+   <img src="${x.img}" alt=""><div><div class="n">${x.n}</div><div class="p">${money(x.price)} × ${x.q}</div></div>
+   <div class="qty"><button data-dec="${x.i}">−</button><span>${x.q}</span><button data-inc="${x.i}">+</button></div></div>`).join("")
+  :`<p style="color:var(--muted);padding:18px 0">Your cart is empty — add a crystal 💎</p>`;
+ document.querySelectorAll("[data-inc]").forEach(b=>b.onclick=()=>{cart[b.dataset.inc]++;save()});
+ document.querySelectorAll("[data-dec]").forEach(b=>b.onclick=()=>{const i=b.dataset.dec;cart[i]--;if(cart[i]<=0)delete cart[i];save()});
+ const sub=list.reduce((s,x)=>s+x.price*x.q,0);
+ const ship=sub===0?0:(sub>=75?0:6.99);
+ $("subTotal").textContent=money(sub);
+ $("shipCost").textContent=sub===0?"—":(ship===0?"FREE":money(ship));
+ $("shipMsg").textContent=sub>=75?"🎉 You unlocked free U.S. shipping!":("Add "+money(75-sub)+" more for free U.S. shipping.");
+ $("grandTotal").textContent=money(sub+ship);
+}
+function openCart(){$("drawer").classList.add("show");$("overlay").classList.add("show")}
+function closeCart(){$("drawer").classList.remove("show");$("overlay").classList.remove("show")}
+$("openCart").onclick=openCart;$("closeCart").onclick=closeCart;$("overlay").onclick=closeCart;
+$("search").oninput=renderGrid;
+$("checkoutBtn").onclick=()=>{if(!cartList().length){toast("Your cart is empty");return}closeCart();$("checkoutModal").showModal()};
+$("cancelCheckout").onclick=()=>$("checkoutModal").close();
+$("checkoutForm").onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target);
+ const num="DC-"+Date.now().toString().slice(-6);const list=cartList();
+ const total=$("grandTotal").textContent;
+ $("doneMsg").innerHTML=`Thank you, ${fd.get("name")}! Your order <b>${num}</b> (${list.reduce((s,x)=>s+x.q,0)} item(s), total <b>${total}</b>) was received.<br>We'll email <b>${fd.get("email")}</b> to confirm and arrange payment.`;
+ $("checkoutModal").close();cart={};save();$("doneModal").showModal()};
+$("doneOk").onclick=()=>$("doneModal").close();
+renderChips();renderGrid();renderCart();
+</script>
+</body>
+</html>
